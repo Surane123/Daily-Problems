@@ -1,0 +1,14 @@
+import java.util.*;
+class Solution {
+    public int reverseBits(int n) {
+        String change=Integer.toBinaryString(n);
+        change = String.format("%32s", change).replace(' ', '0');
+        String rev="";
+        for(int i=change.length()-1;i>=0;i--)
+        {
+            int digit=change.charAt(i)-'0';
+            rev=rev+digit;
+        }
+        return (int)Long.parseLong(rev,2);
+    }
+}
