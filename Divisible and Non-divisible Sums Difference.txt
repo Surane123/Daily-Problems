@@ -1,0 +1,19 @@
+class Solution {
+    public int differenceOfSums(int n, int m) {
+        int divide=0;
+        int nonDivide=0;
+        for(int i=1;i<=n;i++)
+        {
+            if(i%m==0)
+            {
+                divide+=i;
+            }
+            else
+            {
+                nonDivide+=i;
+            }
+        }
+        int diff=nonDivide-divide;
+        return diff;
+    }
+}
