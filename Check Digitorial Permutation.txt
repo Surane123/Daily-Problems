@@ -1,0 +1,37 @@
+class Solution {
+    public boolean isDigitorialPermutation(int n) {
+        int real = n;
+        int[] fact = new int[10];
+        fact[0] = 1;
+        for (int i = 1; i < 10; i++) {
+            fact[i] = i * fact[i - 1];
+        }
+        int temp = n;
+        int sum = 0;
+
+        while (temp > 0) {
+            int digit = temp % 10;
+            sum += fact[digit];
+            temp /= 10;
+        }
+        int[] freqOriginal = new int[10];
+        int[] freqSum = new int[10];
+        int t1 = real;
+        while (t1 > 0) {
+            freqOriginal[t1 % 10]++;
+            t1 /= 10;
+        }
+        int t2 = sum;
+
+        while (t2 > 0) {
+            freqSum[t2 % 10]++;
+            t2 /= 10;
+        }
+        for (int i = 0; i < 10; i++) {
+            if (freqOriginal[i] != freqSum[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
