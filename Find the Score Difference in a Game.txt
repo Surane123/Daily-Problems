@@ -1,0 +1,28 @@
+class Solution {
+    public int scoreDifference(int[] nums) {
+        
+        int play1=0;
+        int play2=0;
+        boolean isFirstActive = true;
+        for(int i=0;i<nums.length;i++)
+            {
+                if(nums[i]%2!=0)
+                {
+                    isFirstActive = !isFirstActive;
+                }
+               if (i % 6 == 5) 
+                {
+                 isFirstActive = !isFirstActive;
+                }
+               if (isFirstActive) 
+                {
+                 play1 += nums[i];
+                }         
+               else 
+                {
+                 play2 += nums[i];
+                }
+            }
+        return play1-play2;
+    }
+}
